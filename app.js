@@ -43,16 +43,27 @@ const gameBoard = (function () {
   return { getBoard, addMarkToBoard, isBoardFilled, clearBoard };
 })();
 
-// const create 'Player' Factory function
+// 'Player' Factory function
 const Player = (playerName, playerMark) => {
+  // private variables
   const name = playerName;
   const mark = playerMark;
 
+  // public functions
   const getName = () => name;
-
   const getMark = () => mark;
-
   const win = () => `${name} win the game!`;
 
   return { getName, getMark, win };
 };
+
+const displayControl = (function () {
+  // DOM Elements
+  const firstInput = document.getElementById("first");
+  const secondInput = document.getElementById("second");
+
+  const startBtn = document.querySelector(".start-btn");
+  const resetBtn = document.querySelector(".reset-btn");
+
+  const gameBoardEl = document.querySelector(".game-board");
+})();
