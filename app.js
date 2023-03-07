@@ -42,3 +42,17 @@ const gameBoard = (function () {
 
   return { getBoard, addMarkToBoard, isBoardFilled, clearBoard };
 })();
+
+// const create 'Player' Factory function
+const Player = (playerName, playerMark) => {
+  const name = playerName;
+  const mark = playerMark;
+
+  const getName = () => name;
+
+  const getMark = () => mark;
+
+  const win = () => `${name} win the game!`;
+
+  return { getName, getMark, win };
+};
