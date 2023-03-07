@@ -21,6 +21,11 @@ const gameBoard = (function () {
     console.log(str);
   }
 
+  // function return boolean value if array doesn't have any of falsy value
+  function isBoardFilled() {
+    return !board.some((cell) => cell === "");
+  }
+
   function addMarkToBoard(index, mark) {
     // we check if index has falsy value and index is bigger than array length
     console.log();
@@ -28,10 +33,11 @@ const gameBoard = (function () {
       console.log("you already add mark in that cell");
       return;
     }
+    // add mark to index
     board[index] = mark;
 
     displayBoard();
   }
 
-  return { getBoard, addMarkToBoard };
+  return { getBoard, addMarkToBoard, checkLineupBoard };
 })();
