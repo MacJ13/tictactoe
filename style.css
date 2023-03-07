@@ -108,3 +108,19 @@ button:active {
   width: 100%;
   max-width: 800px;
 }
+
+.player-field {
+  width: 100%;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-field label {
+  margin-right: 1rem;
+  width: 200px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
