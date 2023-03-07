@@ -99,3 +99,12 @@ button {
 button:active {
   top: 0.5rem;
 }
+
+.player-form {
+  display: flex;
+  justify-content: center;
+
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
+}
