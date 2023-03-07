@@ -8,4 +8,16 @@ const gameBoard = (function () {
   function getBoard() {
     return board;
   }
+
+  // function to display board in console
+  function displayBoard() {
+    let str = "";
+    for (let i = 0; i < board.length; i += 3) {
+      for (let j = 0; j < board.length / 3; j++) {
+        str += board[i + j] ? `[${board[i + j]}]` : "[ ]";
+      }
+      str += "\n";
+    }
+    console.log(str);
+  }
 })();
