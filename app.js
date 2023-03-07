@@ -97,5 +97,13 @@ const displayControl = (function () {
     });
   };
 
+  // function with event listener of button 'start' element
+  function onClickBtnStart(board) {
+    startBtn.addEventListener("click", () => {
+      renderGameBoard(board);
+      showGameContent();
+    });
+  }
+
   return { getFirstInputValue, getSecondInputValue };
 })();
