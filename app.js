@@ -20,4 +20,6 @@ const gameBoard = (function () {
     }
     console.log(str);
   }
+
+  return { getBoard };
 })();
