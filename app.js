@@ -36,5 +36,9 @@ const gameBoard = (function () {
     displayBoard();
   }
 
-  return { getBoard, addMarkToBoard, isBoardFilled };
+  function clearBoard() {
+    board = new Array(9).fill("");
+  }
+
+  return { getBoard, addMarkToBoard, isBoardFilled, clearBoard };
 })();
