@@ -28,16 +28,13 @@ const gameBoard = (function () {
 
   function addMarkToBoard(index, mark) {
     // we check if index has falsy value and index is bigger than array length
-    console.log();
-    if (index > board.length - 1 || board[index] || isBoardFilled()) {
-      console.log("you already add mark in that cell");
-      return;
-    }
+    if (index > board.length - 1 || board[index]) return;
+
     // add mark to index
     board[index] = mark;
 
     displayBoard();
   }
 
-  return { getBoard, addMarkToBoard, checkLineupBoard };
+  return { getBoard, addMarkToBoard, isBoardFilled };
 })();
