@@ -86,5 +86,16 @@ const displayControl = (function () {
     console.log("Hello");
   };
 
+  // function add new 'cell' elements into 'gameboard' grid element
+  const renderGameBoard = (board) => {
+    board.forEach((_, i) => {
+      const cellEl = document.createElement("button");
+      cellEl.className = "cell";
+      cellEl.dataset.cell = i;
+
+      gameBoardEl.appendChild(cellEl);
+    });
+  };
+
   return { getFirstInputValue, getSecondInputValue };
 })();
