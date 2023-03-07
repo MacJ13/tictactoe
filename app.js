@@ -67,12 +67,23 @@ const displayControl = (function () {
 
   const gameBoardEl = document.querySelector(".game-board");
 
+  // functions return input values
   const getFirstInputValue = () => {
     return firstInput.value || "Player1";
   };
 
   const getSecondInputValue = () => {
     return secondInput.value || "Player 2";
+  };
+
+  // function open 'game content' element and close 'form player' element
+  const showGameContent = () => {
+    const gameContentEl = document.querySelector(".game-content");
+    const playerFormEl = document.querySelector(".player-form");
+
+    gameContentEl.classList.remove("hidden");
+    playerFormEl.classList.add("hidden");
+    console.log("Hello");
   };
 
   return { getFirstInputValue, getSecondInputValue };
