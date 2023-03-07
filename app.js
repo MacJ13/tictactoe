@@ -66,4 +66,14 @@ const displayControl = (function () {
   const resetBtn = document.querySelector(".reset-btn");
 
   const gameBoardEl = document.querySelector(".game-board");
+
+  const getFirstInputValue = () => {
+    return firstInput.value || "Player1";
+  };
+
+  const getSecondInputValue = () => {
+    return secondInput.value || "Player 2";
+  };
+
+  return { getFirstInputValue, getSecondInputValue };
 })();
