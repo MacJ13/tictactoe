@@ -146,6 +146,10 @@ button[class$="btn"]:active {
   height: 100%;
 }
 
+.cell:hover {
+  background-color: #0c78fb5a;
+}
+
 .hidden {
   display: none;
 }
