@@ -176,3 +176,11 @@ const displayControl = (function (board) {
     showMarkToCellBoard,
   };
 })(gameBoard.getBoard());
+
+const game = (function () {
+  let firstPlayer;
+  let secondPlayer;
+
+  let currentPlayer;
+  let finish = false;
+})();
