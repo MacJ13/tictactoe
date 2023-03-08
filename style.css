@@ -89,7 +89,7 @@ button[class$="btn"]:active {
 
   flex-wrap: wrap;
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
 }
 
 .player-field {
