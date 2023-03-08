@@ -40,7 +40,12 @@ const gameBoard = (function () {
     board = new Array(9).fill("");
   }
 
-  return { getBoard, addMarkToBoard, isBoardFilled, clearBoard };
+  return {
+    getBoard,
+    addMarkToBoard,
+    isBoardFilled,
+    clearBoard,
+  };
 })();
 
 // 'Player' Factory function
@@ -57,7 +62,7 @@ const Player = (playerName, playerMark) => {
   return { getName, getMark, win };
 };
 
-const displayControl = (function () {
+const displayControl = (function (board) {
   // DOM Elements
   const firstInput = document.getElementById("first");
   const secondInput = document.getElementById("second");
@@ -67,6 +72,8 @@ const displayControl = (function () {
 
   const gameBoardEl = document.querySelector(".game-board");
 
+  const gameCurrentEl = document.querySelector(".game-current");
+
   // functions return input values
   const getFirstInputValue = () => {
     return firstInput.value || "Player1";
@@ -75,7 +82,6 @@ const displayControl = (function () {
   const getSecondInputValue = () => {
     return secondInput.value || "Player 2";
   };
-
   // function open 'game content' element and close 'form player' element
   const showGameContent = () => {
     const gameContentEl = document.querySelector(".game-content");
@@ -86,8 +92,13 @@ const displayControl = (function () {
     console.log("Hello");
   };
 
+  const setCurrentPlayer = (name) => {
+    gameCurrentEl.textContent = `now, it's ${name}'s turn`;
+  };
+
   // function add new 'cell' elements into 'gameboard' grid element
-  const renderGameBoard = (board) => {
+  const renderGameBoard = () => {
+    gameBoardEl.innerHTML = "";
     board.forEach((_, i) => {
       const cellEl = document.createElement("button");
       cellEl.className = "cell";
@@ -98,12 +109,17 @@ const displayControl = (function () {
   };
 
   // function with event listener of button 'start' element
-  function onClickBtnStart(board) {
+  function onClickBtnStart(fn) {
     startBtn.addEventListener("click", () => {
-      renderGameBoard(board);
+      fn();
+      renderGameBoard();
       showGameContent();
     });
   }
 
-  return { getFirstInputValue, getSecondInputValue };
-})();
+  return {
+    getFirstInputValue,
+    getSecondInputValue,
+    onClickBtnStart,
+  };
+})(gameBoard.getBoard());
