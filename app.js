@@ -87,9 +87,11 @@ const Player = (playerName, playerMark) => {
   // public functions
   const getName = () => name;
   const getMark = () => mark;
+
+  const turn = () => `now, it's ${name}'s turn`;
   const win = () => `${name} win the game!`;
 
-  return { getName, getMark, win };
+  return { getName, getMark, win, turn };
 };
 
 const displayControl = (function (board) {
@@ -122,14 +124,14 @@ const displayControl = (function (board) {
     console.log("Hello");
   };
 
-  const setCurrentPlayer = (name) => {
-    gameCurrentEl.textContent = `now, it's ${name}'s turn`;
+  const setCurrentPlayer = (txt) => {
+    gameCurrentEl.textContent = txt;
   };
 
   function getCell(e) {
     const target = e.target;
 
-    if (target.className !== "cell") return;
+    // if (target.className !== "cell") return;
 
     const { cell } = target.dataset;
     return cell;
@@ -142,7 +144,11 @@ const displayControl = (function (board) {
   }
 
   function onClickGameBoard(fn) {
-    gameBoardEl.addEventListener("click", fn);
+    gameBoardEl.addEventListener("click", (e) => {
+      const cellNumber = getCell(e);
+      if (!cellNumber) return;
+      fn(cellNumber);
+    });
   }
 
   // function add new 'cell' elements into 'gameboard' grid element
@@ -172,7 +178,6 @@ const displayControl = (function (board) {
     onClickBtnStart,
     setCurrentPlayer,
     onClickGameBoard,
-    getCell,
     showMarkToCellBoard,
   };
 })(gameBoard.getBoard());
@@ -191,29 +196,31 @@ const game = (function () {
     firstPlayer = Player(firstName, "x");
     secondPlayer = Player(secondName, "o");
 
-    displayControl.setCurrentPlayer(firstPlayer.getName());
-
     currentPlayer = firstPlayer;
+    displayControl.setCurrentPlayer(currentPlayer.turn());
   }
 
-  function play(e) {
-    if (gameBoard.isBoardFilled()) return;
+  function play(cellNumber) {
     if (finish) return;
-    const cellNumber = displayControl.getCell(e);
-    console.log(currentPlayer.getMark());
+    if (gameBoard.isBoardFilled()) return;
 
-    if (!cellNumber || !gameBoard.isElementBoardEmpty(cellNumber)) return;
+    if (!gameBoard.isElementBoardEmpty(cellNumber)) return;
 
     gameBoard.addMarkToBoard(cellNumber, currentPlayer.getMark());
-    displayControl.markCellToBoard(cellNumber, currentPlayer.getMark());
+    displayControl.showMarkToCellBoard(cellNumber, currentPlayer.getMark());
+
     if (gameBoard.checkLineupBoard(currentPlayer.getMark())) {
-      console.log(`${currentPlayer.getName()} win!!!`);
+      displayControl.setCurrentPlayer(currentPlayer.win());
       finish = true;
     } else {
       currentPlayer =
         currentPlayer === firstPlayer ? secondPlayer : firstPlayer;
 
-      displayControl.setCurrentPlayer(currentPlayer.getName());
+      displayControl.setCurrentPlayer(currentPlayer.turn());
     }
   }
+
+  displayControl.onClickBtnStart(createPlayers);
+
+  displayControl.onClickGameBoard(play);
 })();
