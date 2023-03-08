@@ -34,10 +34,10 @@ body {
   margin-bottom: 3rem;
   text-align: center;
 
-  border: 0.5rem dotted #bfdbfe;
+  border-bottom: 0.5rem solid #bfdbfe;
   padding: 1rem 3rem;
 
-  background-color: rgb(66, 149, 251);
+  /* background-color: rgb(66, 149, 251); */
 }
 
 .heading h1 {
@@ -78,6 +78,7 @@ button:hover {
 
 button[class$="btn"] {
   background-color: rgb(66, 149, 251);
+  border-bottom: 0.5rem solid #bfdbfe;
 }
 
 button[class$="btn"]:hover {
@@ -125,6 +126,9 @@ button[class$="btn"]:active {
 .game-current {
   text-align: center;
   text-transform: uppercase;
+  padding: 0.5rem 2rem;
+  background-color: #bfdbfe;
+  color: rgb(66, 149, 251);
   margin-bottom: 5rem;
 }
 
@@ -162,8 +166,4 @@ button[class$="btn"]:active {
 
 .hidden {
   display: none;
-}
-
-.result {
-  background-color: rgb(66, 149, 251);
 }
