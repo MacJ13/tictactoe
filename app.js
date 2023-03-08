@@ -94,6 +94,7 @@ const Player = (playerName, playerMark) => {
   return { getName, getMark, win, turn };
 };
 
+// 'DISPLAY CONTROL' MODULE PATTERN'
 const displayControl = (function (board) {
   // DOM Elements
   const firstInput = document.getElementById("first");
@@ -182,6 +183,7 @@ const displayControl = (function (board) {
   };
 })(gameBoard.getBoard());
 
+// THE 'GAME' MODULE PATTERN
 const game = (function () {
   let firstPlayer;
   let secondPlayer;
@@ -201,23 +203,26 @@ const game = (function () {
   }
 
   function play(cellNumber) {
-    if (finish) return;
-    if (gameBoard.isBoardFilled()) return;
+    if (finish || !gameBoard.isElementBoardEmpty(cellNumber)) return;
 
-    if (!gameBoard.isElementBoardEmpty(cellNumber)) return;
+    let playerInfo = "";
 
     gameBoard.addMarkToBoard(cellNumber, currentPlayer.getMark());
     displayControl.showMarkToCellBoard(cellNumber, currentPlayer.getMark());
 
     if (gameBoard.checkLineupBoard(currentPlayer.getMark())) {
-      displayControl.setCurrentPlayer(currentPlayer.win());
+      playerInfo = currentPlayer.win();
+      finish = true;
+    } else if (gameBoard.isBoardFilled()) {
+      playerInfo = "It's a tie!!";
       finish = true;
     } else {
       currentPlayer =
         currentPlayer === firstPlayer ? secondPlayer : firstPlayer;
-
-      displayControl.setCurrentPlayer(currentPlayer.turn());
+      playerInfo = currentPlayer.turn();
     }
+
+    displayControl.setCurrentPlayer(playerInfo);
   }
 
   displayControl.onClickBtnStart(createPlayers);
