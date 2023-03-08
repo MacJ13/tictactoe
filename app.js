@@ -105,7 +105,7 @@ const displayControl = (function (board) {
     return cell;
   }
 
-  function markCellToBoard(cellNumber, mark) {
+  function showMarkToCellBoard(cellNumber, mark) {
     const cellEL = document.querySelector(`button[data-cell="${cellNumber}"]`);
 
     cellEL.textContent = mark;
@@ -140,5 +140,9 @@ const displayControl = (function (board) {
     getFirstInputValue,
     getSecondInputValue,
     onClickBtnStart,
+    setCurrentPlayer,
+    onClickGameBoard,
+    getCell,
+    showMarkToCellBoard,
   };
 })(gameBoard.getBoard());
