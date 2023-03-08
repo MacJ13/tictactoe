@@ -156,10 +156,6 @@ const displayControl = (function (board) {
     });
   };
 
-  const clearGameBoard = () => {
-    renderGameBoard();
-  };
-
   // function with event listener of button 'start' element
   function onClickBtnStart(fn) {
     startBtn.addEventListener("click", () => {
@@ -180,7 +176,7 @@ const displayControl = (function (board) {
   function onClickResetBtn(fn) {
     resetBtn.addEventListener("click", () => {
       fn();
-      clearGameBoard();
+      renderGameBoard();
     });
   }
 
