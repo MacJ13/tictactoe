@@ -195,4 +195,25 @@ const game = (function () {
 
     currentPlayer = firstPlayer;
   }
+
+  function play(e) {
+    if (gameBoard.isBoardFilled()) return;
+    if (finish) return;
+    const cellNumber = displayControl.getCell(e);
+    console.log(currentPlayer.getMark());
+
+    if (!cellNumber || !gameBoard.isElementBoardEmpty(cellNumber)) return;
+
+    gameBoard.addMarkToBoard(cellNumber, currentPlayer.getMark());
+    displayControl.markCellToBoard(cellNumber, currentPlayer.getMark());
+    if (gameBoard.checkLineupBoard(currentPlayer.getMark())) {
+      console.log(`${currentPlayer.getName()} win!!!`);
+      finish = true;
+    } else {
+      currentPlayer =
+        currentPlayer === firstPlayer ? secondPlayer : firstPlayer;
+
+      displayControl.setCurrentPlayer(currentPlayer.getName());
+    }
+  }
 })();
