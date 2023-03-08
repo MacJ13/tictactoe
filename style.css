@@ -36,6 +36,8 @@ body {
 
   border: 0.5rem dotted #bfdbfe;
   padding: 1rem 3rem;
+
+  background-color: rgb(66, 149, 251);
 }
 
 .heading h1 {
@@ -70,6 +72,18 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background-color: rgb(66, 149, 251);
+}
+
+button[class$="btn"] {
+  background-color: rgb(66, 149, 251);
+}
+
+button[class$="btn"]:hover {
+  background-color: transparent;
+}
+
 button[class$="btn"]:active {
   top: 0.5rem;
 }
@@ -81,10 +95,6 @@ button[class$="btn"]:active {
   padding: 0.5rem 2rem;
   font-size: 1.5rem;
   font-weight: 600;
-}
-
-button:hover {
-  background-color: rgb(66, 149, 251);
 }
 
 .player-form {
@@ -152,4 +162,8 @@ button:hover {
 
 .hidden {
   display: none;
+}
+
+.result {
+  background-color: rgb(66, 149, 251);
 }
