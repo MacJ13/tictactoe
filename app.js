@@ -164,6 +164,10 @@ const displayControl = (function (board) {
     });
   };
 
+  const clearGameBoard = () => {
+    renderGameBoard();
+  };
+
   // function with event listener of button 'start' element
   function onClickBtnStart(fn) {
     startBtn.addEventListener("click", () => {
@@ -180,6 +184,7 @@ const displayControl = (function (board) {
     setCurrentPlayer,
     onClickGameBoard,
     showMarkToCellBoard,
+    clearGameBoard,
   };
 })(gameBoard.getBoard());
 
