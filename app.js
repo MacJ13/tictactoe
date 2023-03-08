@@ -96,6 +96,25 @@ const displayControl = (function (board) {
     gameCurrentEl.textContent = `now, it's ${name}'s turn`;
   };
 
+  function getCell(e) {
+    const target = e.target;
+
+    if (target.className !== "cell") return;
+
+    const { cell } = target.dataset;
+    return cell;
+  }
+
+  function markCellToBoard(cellNumber, mark) {
+    const cellEL = document.querySelector(`button[data-cell="${cellNumber}"]`);
+
+    cellEL.textContent = mark;
+  }
+
+  function onClickGameBoard(fn) {
+    gameBoardEl.addEventListener("click", fn);
+  }
+
   // function add new 'cell' elements into 'gameboard' grid element
   const renderGameBoard = () => {
     gameBoardEl.innerHTML = "";
