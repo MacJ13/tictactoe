@@ -233,7 +233,16 @@ const game = (function () {
     displayControl.setCurrentPlayer(playerInfo);
   }
 
+  function resetGame() {
+    stopPlaying = false;
+    currentPlayer = firstPlayer;
+    displayControl.setCurrentPlayer(currentPlayer.turn());
+    gameBoard.clearBoard();
+  }
+
   displayControl.onClickBtnStart(createPlayers);
 
   displayControl.onClickGameBoard(play);
+
+  displayControl.onClickResetBtn(resetGame);
 })();
