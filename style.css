@@ -104,7 +104,7 @@ button[class$="btn"]:active {
 
   flex-wrap: wrap;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 .player-field {
@@ -116,9 +116,9 @@ button[class$="btn"]:active {
 }
 
 .player-field label {
+  flex: 1;
   margin-right: 1rem;
-  width: 200px;
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 600;
   text-align: center;
 }
