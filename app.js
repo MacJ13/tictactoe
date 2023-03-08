@@ -183,4 +183,16 @@ const game = (function () {
 
   let currentPlayer;
   let finish = false;
+
+  function createPlayers() {
+    const firstName = displayControl.getFirstInputValue();
+    const secondName = displayControl.getSecondInputValue();
+
+    firstPlayer = Player(firstName, "x");
+    secondPlayer = Player(secondName, "o");
+
+    displayControl.setCurrentPlayer(firstPlayer.getName());
+
+    currentPlayer = firstPlayer;
+  }
 })();
