@@ -144,14 +144,6 @@ const displayControl = (function (board) {
     cellEL.textContent = mark;
   }
 
-  function onClickGameBoard(fn) {
-    gameBoardEl.addEventListener("click", (e) => {
-      const cellNumber = getCell(e);
-      if (!cellNumber) return;
-      fn(cellNumber);
-    });
-  }
-
   // function add new 'cell' elements into 'gameboard' grid element
   const renderGameBoard = () => {
     gameBoardEl.innerHTML = "";
@@ -177,6 +169,21 @@ const displayControl = (function (board) {
     });
   }
 
+  function onClickGameBoard(fn) {
+    gameBoardEl.addEventListener("click", (e) => {
+      const cellNumber = getCell(e);
+      if (!cellNumber) return;
+      fn(cellNumber);
+    });
+  }
+
+  function onClickResetBtn(fn) {
+    resetBtn.addEventListener("click", () => {
+      fn();
+      clearGameBoard();
+    });
+  }
+
   return {
     getFirstInputValue,
     getSecondInputValue,
@@ -184,7 +191,7 @@ const displayControl = (function (board) {
     setCurrentPlayer,
     onClickGameBoard,
     showMarkToCellBoard,
-    clearGameBoard,
+    onClickResetBtn,
   };
 })(gameBoard.getBoard());
 
