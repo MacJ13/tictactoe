@@ -189,7 +189,7 @@ const game = (function () {
   let secondPlayer;
 
   let currentPlayer;
-  let stopGame = false;
+  let stopPlaying = false;
 
   function createPlayers() {
     const firstName = displayControl.getFirstInputValue();
@@ -203,7 +203,7 @@ const game = (function () {
   }
 
   function play(cellNumber) {
-    if (stopGame || !gameBoard.isElementBoardEmpty(cellNumber)) return;
+    if (stopPlaying || !gameBoard.isElementBoardEmpty(cellNumber)) return;
 
     let playerInfo = "";
 
@@ -212,10 +212,10 @@ const game = (function () {
 
     if (gameBoard.checkLineupBoard(currentPlayer.getMark())) {
       playerInfo = currentPlayer.win();
-      stopGame = true;
+      stopPlaying = true;
     } else if (gameBoard.isBoardFilled()) {
       playerInfo = "It's a tie!!";
-      stopGame = true;
+      stopPlaying = true;
     } else {
       currentPlayer =
         currentPlayer === firstPlayer ? secondPlayer : firstPlayer;
