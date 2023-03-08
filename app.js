@@ -40,11 +40,16 @@ const gameBoard = (function () {
     board = new Array(9).fill("");
   }
 
+  function isElementBoardEmpty(index) {
+    return board[index] === "";
+  }
+
   return {
     getBoard,
     addMarkToBoard,
     isBoardFilled,
     clearBoard,
+    isElementBoardEmpty,
   };
 })();
 
